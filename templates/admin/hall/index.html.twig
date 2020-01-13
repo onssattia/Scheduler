@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheluder: liste des salles{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Liste des salles</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="text-right margin-bottom-30">
+                <a href="{{ path('hall_new') }}" class="btn btn-primary">
+                    Créer une nouvelle salle
+                </a>
+            </div>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Département</th>
+                    <th>Etage</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for hall in halls %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('hall_show', {id: hall.id}) }}">{{ hall.id }}</a>
+                        </td>
+                        <td>{{ hall.name }}</td>
+                        <td>{{ hall.department }}</td>
+                        <td>{{ hall.floor }}</td>
+                        <td>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="{{ path('hall_show', {'id': hall.id}) }}" class="btn btn-default">
+                                        <i class="lnr lnr-eye"></i> Consulter
+                                    </a>
+
+                                </li>
+                                <li>
+                                    <a href="{{ path('hall_edit', {'id': hall.id}) }}" class="btn btn-success">
+                                        <i class="lnr lnr-pencil"></i> Modifier
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">
+                            <div class="text-center">
+                                <span class="text-info">
+                                    Aucune salle n'est enregistrée
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

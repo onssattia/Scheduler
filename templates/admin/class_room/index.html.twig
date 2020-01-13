@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheduler: liste des classes{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Liste des classes</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="text-right margin-bottom-30">
+                <a href="{{ path('class_room_new') }}" class="btn btn-primary">
+                    Créer une nouvelle classe
+                </a>
+            </div>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Nom complet</th>
+                    <th>Nombre des étudiants</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for class_room in class_rooms %}
+                    <tr>
+                        <td>{{ class_room.id }}</td>
+                        <td>{{ class_room.name }}</td>
+                        <td>{{ class_room.fullName }}</td>
+                        <td>{{ class_room.studentsNumber }}</td>
+                        <td>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="{{ path('class_room_show', {'id': class_room.id}) }}" class="btn btn-default">
+                                        <i class="lnr lnr-eye"></i> Consulter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('class_room_edit', {'id': class_room.id}) }}" class="btn btn-success">
+                                        <i class="lnr lnr-pencil"></i> Modifier
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">
+                            <div class="text-center">
+                                <span class="text-info">
+                                    Aucune classe n'est enregistrée
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

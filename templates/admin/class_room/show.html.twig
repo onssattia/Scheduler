@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheduler: fiche classe{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Fiche classe</h1> <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path('class_room_index') }}">
+                            Retour à la liste
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('class_room_edit', {'id': class_room.id}) }}" class="btn btn-success">
+                            Mettre à jour
+                        </a>
+
+
+                    </li>
+                    <li>
+                        {{ include('admin/class_room/_delete_form.html.twig') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+            <table class="table table-bordered table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ class_room.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ class_room.name }}</td>
+                </tr>
+                <tr>
+                    <th>Nom complet</th>
+                    <td>{{ class_room.fullName }}</td>
+                </tr>
+                <tr>
+                    <th>Nombre des étudiants</th>
+                    <td>{{ class_room.studentsNumber }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

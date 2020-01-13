@@ -1,0 +1,173 @@
+{% extends 'base.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block title %}Schedule{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Fiche emploi de temps</h1> <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path('schedule_index') }}">
+                            Retour à la liste
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('schedule_edit', {'id': schedule.id}) }}" class="btn btn-success">
+                            Mettre à jour
+                        </a>
+                    </li>
+                    <li>
+                        {{ include('admin/schedule/_delete_form.html.twig') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+            <table class="table table-bordered table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ schedule.id }}</td>
+                </tr>
+                <tr>
+                    <th>Classe</th>
+                    <td>{{ schedule.classRoom.name ~ ' (' ~ schedule.classRoom.fullName ~ ')' }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ schedule.name }}</td>
+                </tr>
+                <tr>
+                    <th>Année</th>
+                    <td>{{ schedule.year }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h5 class="panel-title">
+                        Détails emploi
+                    </h5>
+                </div>
+                <div class="panel-body">
+                    <div class="pull-right margin-bottom-30">
+                        <a href="javascript:" class="btn btn-primary" data-toggle="modal" data-target="#sessionModal">
+                            Renseigner l'emploi
+                        </a>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="7">
+                                <div class="text-center">
+                                    Emploi de temps {{ 'now'|date('Y') }}
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="7">
+                                <div class="text-center">
+                                    {{ schedule.classRoom.name|upper ~ ' (' ~ schedule.classRoom.fullName ~ ') ' }}
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="bg-warning" width="18%">
+                                Lundi
+                            </th>
+                            <th class="bg-warning" width="18%">
+                                Mardi
+                            </th>
+                            <th class="bg-warning" width="18%">
+                                Mercredi
+                            </th>
+                            <th class="bg-warning" width="18%">
+                                Jeudi
+                            </th>
+                            <th class="bg-warning" width="18%">
+                                Vendredi
+                            </th>
+                            <th class="bg-warning" width="18%">
+                                Samedi
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                {% for key, sessionsByDay in sessions %}
+                                    <td>
+                                        <table class="table table-bordered">
+                                            {% for session in sessionsByDay %}
+                                                {% set teacher = session.teacher %}
+                                                {% set subject = session.subject %}
+                                                {% set hall = session.hall %}
+                                                <tr>
+                                                    <td>
+                                                        {{ session.startTime|date('H:i') ~ ' - ' ~ session.endTime|date('H:i') }}
+                                                    </td>
+                                                    <td>
+                                                        <b>Prof:</b> {{  (teacher.sexe == 'H' ? 'M. ' : 'Mme. ') ~ teacher.firstName|capitalize ~ ' ' ~ teacher.lastName|upper }}<br/>
+                                                        <b>Salle:</b> {{ hall.name }}<br/>
+                                                        <b>Mat:</b> {{  subject.name }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                    </td>
+                                    {% else %}
+                                        <td colspan="6">
+                                            <div class="text-center">
+                                                <span class="text-info">
+                                                    Cet emploi n'est pas configuré
+                                                </span>
+                                            </div>
+                                        </td>
+                                {% endfor %}
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="sessionModal" class="modal fade" role="dialog" data-submitted="{{ submitted ? 'true' : 'false' }}">
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">
+                        Nouvelle séance
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    {% if error %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            {{error}}
+                        </div>
+                    {% endif %}
+
+                    {{ form_widget(form) }}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary" >Enregistrer</button>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

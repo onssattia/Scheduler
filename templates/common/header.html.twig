@@ -1,0 +1,26 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="brand">
+        <a href="{{path(is_granted('ROLE_ADMIN') ? 'admin_dashboard' : 'student_dashboard')}}">
+            Scheduler
+        </a>
+    </div>
+    <div class="container-fluid">
+        <div class="navbar-btn">
+            <button type="button" class="btn-toggle-fullwidth"><i class="lnr lnr-arrow-left-circle"></i></button>
+        </div>
+        <div id="navbar-menu">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ path(is_granted('ROLE_ADMIN') ? 'admin_logout' : 'app_logout') }}" class="icon-menu">
+                        <i class="lnr lnr-power-switch"></i> <span>Déconnexion</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- END NAVBAR -->
+
+
+

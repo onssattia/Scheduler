@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheduler: liste des emplois de temps{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Liste des emplois de temps</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="text-right margin-bottom-30">
+                <a href="{{ path('schedule_new') }}" class="btn btn-primary">
+                    Créer une nouveau emploi
+                </a>
+            </div>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Classe</th>
+                    <th>Nom</th>
+                    <th>Année</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for schedule in schedules %}
+                    <tr>
+                        <td>
+                            {{ schedule.id }}
+                        </td>
+                        <td>{{ schedule.classRoom.name }}</td>
+                        <td>{{ schedule.name }}</td>
+                        <td>{{ schedule.year }}</td>
+                        <td>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="{{ path('schedule_show', {'id': schedule.id}) }}" class="btn btn-default">
+                                        <i class="lnr lnr-eye"></i> Consulter l'emploi
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('schedule_edit', {'id': schedule.id}) }}" class="btn btn-success">
+                                        <i class="lnr lnr-pencil"></i> Modifier
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">
+                            <div class="text-center">
+                                <span class="text-info">
+                                    Aucun emploi de temps n'est enregistrée
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

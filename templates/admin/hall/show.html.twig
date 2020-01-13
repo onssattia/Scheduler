@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Fiche salle
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Fiche salle</h1> <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path('hall_index') }}">
+                            Retour à la liste
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('hall_edit', {'id': hall.id}) }}" class="btn btn-success">
+                            Mettre à jour
+                        </a>
+
+
+                    </li>
+                    <li>
+                        {{ include('admin/hall/_delete_form.html.twig') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+
+            <table class="table table-bordered table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ hall.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ hall.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Département</th>
+                        <td>{{ hall.department }}</td>
+                    </tr>
+                    <tr>
+                        <th>Etage</th>
+                        <td>{{ hall.floor }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

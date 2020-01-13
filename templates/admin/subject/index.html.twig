@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheduler: liste des matières{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Liste des matières</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="text-right margin-bottom-30">
+                <a href="{{ path('subject_new') }}" class="btn btn-primary">
+                    Créer une nouvelle matière
+                </a>
+            </div>
+            <table class="table table-bordered table-condensed table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Type</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for subject in subjects %}
+                    <tr>
+                        <td>
+                            <a href="{{ path('subject_show', {id: subject.id}) }}">{{ subject.id }}</a>
+                        </td>
+                        <td>{{ subject.name }}</td>
+                        <td>{{ subject.type }}</td>
+                        <td>
+                            <ul class="list-inline">
+                                <li>
+                                    <a href="{{ path('subject_show', {'id': subject.id}) }}" class="btn btn-default">
+                                        <i class="lnr lnr-eye"></i> Consulter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('subject_edit', {'id': subject.id}) }}" class="btn btn-success">
+                                        <i class="lnr lnr-pencil"></i> Modifier
+                                    </a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">
+                            <div class="text-center">
+                                <span class="text-info">
+                                    Aucune matière n'est enregistrée
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+    </div>
+{% endblock %}

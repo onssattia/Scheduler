@@ -1,0 +1,23 @@
+{
+  "build/main.css": "/build/main.css",
+  "build/main.js": "/build/main.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/vendors~main.css": "/build/vendors~main.css",
+  "build/vendors~main.js": "/build/vendors~main.js",
+  "build/fonts/Linearicons-Free.woff2?w118d": "/build/fonts/Linearicons-Free.03e91f12.woff2",
+  "build/fonts/Linearicons-Free.ttf?w118d": "/build/fonts/Linearicons-Free.2f3e9f80.ttf",
+  "build/fonts/Linearicons-Free.woff?w118d": "/build/fonts/Linearicons-Free.65060723.woff",
+  "build/fonts/Linearicons-Free.eot?w118d": "/build/fonts/Linearicons-Free.b9b7f23c.eot",
+  "build/fonts/fontawesome-webfont.eot?v=4.7.0": "/build/fonts/fontawesome-webfont.674f50d2.eot",
+  "build/fonts/fontawesome-webfont.woff2?v=4.7.0": "/build/fonts/fontawesome-webfont.af7ae505.woff2",
+  "build/fonts/fontawesome-webfont.ttf?v=4.7.0": "/build/fonts/fontawesome-webfont.b06871f2.ttf",
+  "build/fonts/fontawesome-webfont.woff?v=4.7.0": "/build/fonts/fontawesome-webfont.fee66e71.woff",
+  "build/fonts/glyphicons-halflings-regular.woff2": "/build/fonts/glyphicons-halflings-regular.448c34a5.woff2",
+  "build/fonts/glyphicons-halflings-regular.ttf": "/build/fonts/glyphicons-halflings-regular.e18bbf61.ttf",
+  "build/fonts/glyphicons-halflings-regular.eot": "/build/fonts/glyphicons-halflings-regular.f4769f9b.eot",
+  "build/fonts/glyphicons-halflings-regular.woff": "/build/fonts/glyphicons-halflings-regular.fa277232.woff",
+  "build/images/Linearicons-Free.svg?w118d": "/build/images/Linearicons-Free.2781bf54.svg",
+  "build/images/fontawesome-webfont.svg?v=4.7.0": "/build/images/fontawesome-webfont.912ec66d.svg",
+  "build/images/glyphicons-halflings-regular.svg": "/build/images/glyphicons-halflings-regular.89889688.svg",
+  "build/images/login-bg.jpg": "/build/images/login-bg.195d88b3.jpg"
+}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Scheduler: nouvelle classe{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Créer une nouvelle classe</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="text-right margin-bottom-30">
+                <a href="{{ path('class_room_index') }}">
+                    Retour à la liste
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
+            {{ include('admin/class_room/_form.html.twig') }}
+        </div>
+    </div>
+{% endblock %}

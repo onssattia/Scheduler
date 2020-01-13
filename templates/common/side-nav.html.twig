@@ -1,0 +1,69 @@
+{% set path = app.request.getRequestUri() %}
+
+<!-- LEFT SIDEBAR -->
+<div id="sidebar-nav" class="sidebar">
+    <div class="sidebar-scroll">
+        <nav>
+            <ul class="nav">
+                {% if is_granted('ROLE_ADMIN') %}
+                <li>
+                    <a href="{{ path('admin_dashboard') }}" class="{{ path ends with '/admin' ? 'active' : '' }}">
+                        <i class="lnr lnr-home"></i>
+                        <span>Tableau de bord</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('class_room_index') }}" class="{{ path starts with '/admin/class/room' ? 'active' : '' }}">
+                        <i class="lnr lnr-users"></i>
+                        <span>Classes</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('subject_index') }}" class="{{ path starts with '/admin/subject' ? 'active' : '' }}">
+                        <i class="lnr lnr-file-empty"></i>
+                        <span>Matières</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('teacher_index') }}" class="{{ path starts with '/admin/teacher' ? 'active' : '' }}">
+                        <i class="lnr lnr-briefcase"></i>
+                        <span>Enseignants</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('hall_index') }}" class="{{ path starts with '/admin/hall' ? 'active' : '' }}">
+                        <i class="lnr lnr-home"></i>
+                        <span>Salles</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('schedule_index') }}" class="{{ path starts with '/admin/schedule' ? 'active' : '' }}">
+                        <i class="lnr lnr-calendar-full"></i>
+                        <span>Emplois de temps</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ path('admin_logout') }}">
+                        <i class="lnr lnr-power-switch"></i>
+                        <span>Déconnexion</span>
+                    </a>
+                </li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('student_dashboard') }}" class="{{ path starts with '/student/schedule' ? 'active' : '' }}">
+                            <i class="lnr lnr-calendar-full"></i>
+                            <span>Emplois de temps</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_logout') }}">
+                            <i class="lnr lnr-power-switch"></i>
+                            <span>Déconnexion</span>
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</div>
+<!-- END LEFT SIDEBAR -->

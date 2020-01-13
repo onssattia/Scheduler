@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Teacher{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Fiche enseignant</h1>
+            <hr/>
+            {% include 'common/flash_message.html.twig' %}
+            <div class="pull-right">
+                <ul class="list-inline">
+                    <li>
+                        <a href="{{ path('teacher_index') }}">
+                            Retour à la liste
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('teacher_edit', {'id': teacher.id}) }}" class="btn btn-success">
+                            Mettre à jour
+                        </a>
+
+
+                    </li>
+                    <li>
+                        {{ include('admin/teacher/_delete_form.html.twig') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table table-condensed table-bordered table-striped">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ teacher.id }}</td>
+                </tr>
+                <tr>
+                    <th>Cin</th>
+                    <td>{{ teacher.cin }}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{ teacher.firstName }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ teacher.lastName }}</td>
+                </tr>
+                <tr>
+                    <th>Matricule</th>
+                    <td>{{ teacher.matricule }}</td>
+                </tr>
+                <tr>
+                    <th>Adresse e-mail</th>
+                    <td>{{ teacher.email }}</td>
+                </tr>
+                <tr>
+                    <th>Tél: </th>
+                    <td>{{ teacher.phoneNumber }}</td>
+                </tr>
+
+                <tr>
+                    <th>Sexe</th>
+                    <td>{{ teacher.sexe }}</td>
+                </tr>
+
+                <tr>
+                    <th>Address</th>
+                    <td>{{ teacher.address }}</td>
+                </tr>
+                <tr>
+                    <th>ZipCode</th>
+                    <td>{{ teacher.zipCode }}</td>
+                </tr>
+                <tr>
+                    <th>City</th>
+                    <td>{{ teacher.city }}</td>
+                </tr>
+                <tr>
+                    <th>Country</th>
+                    <td>{{ teacher.country }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
